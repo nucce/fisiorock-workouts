@@ -179,3 +179,82 @@ function updateHeaderButton() {
       break;
   }
 }
+
+/* ===============================
+   HEADER CONTROL (BUTTON + SWIPE)
+   =============================== */
+
+const header = document.getElementById("appHeader");
+const floatingBtn = document.getElementById("floatingHeaderToggle");
+
+const HEADER_STATES = ["header-normal", "header-compact", "header-hidden"];
+let headerStateIndex = 0;
+
+// ripristina stato
+const savedHeaderState = localStorage.getItem("headerState");
+if (savedHeaderState) {
+  const idx = HEADER_STATES.indexOf(savedHeaderState);
+  if (idx >= 0) headerStateIndex = idx;
+}
+applyHeaderState();
+
+// 🔘 pulsante flottante
+floatingBtn.onclick = () => {
+  headerStateIndex = (headerStateIndex + 1) % HEADER_STATES.length;
+  applyHeaderState();
+};
+
+// applica stato
+function applyHeaderState() {
+  header.className = HEADER_STATES[headerStateIndex];
+  localStorage.setItem("headerState", HEADER_STATES[headerStateIndex]);
+
+  switch (HEADER_STATES[headerStateIndex]) {
+    case "header-normal":
+      floatingBtn.textContent = "📐";
+      break;
+    case "header-compact":
+      floatingBtn.textContent = "⬆️";
+      break;
+    case "header-hidden":
+      floatingBtn.textContent = "⬇️";
+      break;
+  }
+}
+
+/* ===============================
+   SWIPE GESTURES
+   =============================== */
+
+let touchStartY = 0;
+let touchEndY = 0;
+
+document.addEventListener("touchstart", e => {
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+document.addEventListener("touchend", e => {
+  touchEndY = e.changedTouches[0].screenY;
+  handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+  const deltaY = touchStartY - touchEndY;
+
+  // ignora swipe piccoli (scroll normale)
+  if (Math.abs(deltaY) < 60) return;
+
+  if (deltaY > 0) {
+    // 👆 swipe UP → riduci / nascondi
+    if (headerStateIndex < HEADER_STATES.length - 1) {
+      headerStateIndex++;
+      applyHeaderState();
+    }
+  } else {
+    // 👇 swipe DOWN → mostra
+    if (headerStateIndex > 0) {
+      headerStateIndex--;
+      applyHeaderState();
+    }
+  }
+}
