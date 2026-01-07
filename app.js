@@ -65,7 +65,7 @@ function loadSheet(sheetName) {
       <p>
         <b>Set:</b> ${set}
         ${reps ? ` | <b>Reps:</b> ${reps}` : ""}
-        | <b>Rec:</b> ${rest}s
+        | <b>Rest:</b> ${rest}s
       </p>
 
       ${description ? `<p>${description}</p>` : ""}
