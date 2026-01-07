@@ -49,6 +49,9 @@ function loadSheet(sheetName) {
       const rest = parseInt(row[4]) || 60;
       const note = row[5] || "";
       const description = row[6] || "";
+      
+      const rir = "";
+      const kg = "";
     } else {
       const rir = row[4] || 5;
       const kg = row[5] || "?";
