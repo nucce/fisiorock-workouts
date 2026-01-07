@@ -38,28 +38,33 @@ function loadSheet(sheetName) {
     const exerciseName = row[1];
     if (!exerciseName) return;
 
-    // 🔗 recupero link dalla cella Excel
+    // 🔗 link sul nome esercizio
     const cellAddress = XLSX.utils.encode_cell({ r: index + 2, c: 1 });
     const cell = sheet[cellAddress];
     const exerciseLink = cell?.l?.Target || "";
 
     const set = row[2] || "";
     const reps = row[3] || "";
-    if(sheetName == 'Warm Up') {
-      const rest = parseInt(row[4]) || 60;
-      const note = row[5] || "";
-      const description = row[6] || "";
-      
-      const rir = "";
-      const kg = "";
+
+    // ✅ dichiarazione unica
+    let rir = "";
+    let kg = "";
+    let rest = 60;
+    let note = "";
+    let description = "";
+
+    if (sheetName === "Warm Up") {
+      rest = parseInt(row[4]) || 60;
+      note = row[5] || "";
+      description = row[6] || "";
     } else {
-      const rir = row[4] || 5;
-      const kg = row[5] || "?";
-      const rest = parseInt(row[6]) || 60;
-      const note = row[7] || "";
-      const description = row[8] || "";
+      rir = row[4] || "";
+      kg = row[5] || "";
+      rest = parseInt(row[6]) || 60;
+      note = row[7] || "";
+      description = row[8] || "";
     }
-    
+
     const div = document.createElement("div");
     div.className = "exercise";
 
