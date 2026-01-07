@@ -45,10 +45,18 @@ function loadSheet(sheetName) {
 
     const set = row[2] || "";
     const reps = row[3] || "";
-    const rest = parseInt(row[5]) || 60;
-    const note = row[6] || "";
-    const description = row[7] || "";
-
+    if(sheetName == 'Warm Up') {
+      const rest = parseInt(row[4]) || 60;
+      const note = row[5] || "";
+      const description = row[6] || "";
+    } else {
+      const rir = row[4] || 5;
+      const kg = row[5] || "?";
+      const rest = parseInt(row[6]) || 60;
+      const note = row[7] || "";
+      const description = row[8] || "";
+    }
+    
     const div = document.createElement("div");
     div.className = "exercise";
 
@@ -65,6 +73,8 @@ function loadSheet(sheetName) {
       <p>
         <b>Set:</b> ${set}
         ${reps ? ` | <b>Reps:</b> ${reps}` : ""}
+        ${rir ? ` | <b>RIR:</b> ${rir}` : ""}
+        ${kg ? ` | <b>Kg:</b> ${kg}` : ""}
         | <b>Rest:</b> ${rest}s
       </p>
 
