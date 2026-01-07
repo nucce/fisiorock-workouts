@@ -26,28 +26,40 @@ function createMenu() {
 
 function loadSheet(sheetName) {
   const sheet = workbook.Sheets[sheetName];
-  const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" });
+  const rows = XLSX.utils.sheet_to_json(sheet, {
+    header: 1,
+    defval: ""
+  });
 
   const content = document.getElementById("content");
   content.innerHTML = `<h2>${sheetName}</h2>`;
 
-  rows.slice(2).forEach(row => {
-    const exercise = row[1];
-    if (!exercise) return;
+  rows.slice(2).forEach((row, index) => {
+    const exerciseName = row[1];
+    if (!exerciseName) return;
+
+    // 🔗 recupero link dalla cella Excel
+    const cellAddress = XLSX.utils.encode_cell({ r: index + 2, c: 1 });
+    const cell = sheet[cellAddress];
+    const exerciseLink = cell?.l?.Target || "";
 
     const set = row[2] || "";
     const reps = row[3] || "";
-    const rest = parseInt(row[5]) || 60; // default 60s
+    const rest = parseInt(row[5]) || 60;
     const note = row[6] || "";
     const description = row[7] || "";
 
     const div = document.createElement("div");
     div.className = "exercise";
 
+    const exerciseHtml = exerciseLink
+      ? `<a href="${exerciseLink}" target="_blank"><strong>${exerciseName}</strong></a>`
+      : `<strong>${exerciseName}</strong>`;
+
     div.innerHTML = `
       <label>
         <input type="checkbox" class="done-check">
-        <strong>${exercise}</strong>
+        ${exerciseHtml}
       </label>
 
       <p>
@@ -63,16 +75,11 @@ function loadSheet(sheetName) {
       <div class="timer"></div>
     `;
 
-    // checkbox completato
-    div.querySelector(".done-check").addEventListener("change", e => {
+    div.querySelector(".done-check").onchange = e =>
       div.classList.toggle("done", e.target.checked);
-    });
 
-    // timer recupero
-    div.querySelector(".start-rest").addEventListener("click", () => {
-      setCurrentExercise(div);
+    div.querySelector(".start-rest").onclick = () =>
       startRestTimer(div, rest);
-    });
 
     content.appendChild(div);
   });
