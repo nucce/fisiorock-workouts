@@ -48,3 +48,43 @@ main{
   font-weight: bold;
   margin-top: 0.5rem;
 }
+
+header {
+  background: #111;
+  color: white;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* 🔹 stato compatto */
+header.header-compact {
+  padding: 0.25rem 1rem;
+}
+
+header.header-compact h1 {
+  font-size: 0.9rem;
+}
+
+/* 🔹 stato nascosto */
+header.header-hidden {
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
