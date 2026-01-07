@@ -1,0 +1,6 @@
+body{font-family:system-ui;margin:0;background:#f5f5f5}
+header{background:#111;color:#fff;padding:1rem;text-align:center}
+nav{display:flex;overflow-x:auto;background:#222}
+nav button{flex:1;padding:1rem;background:none;color:#fff;border:none}
+main{padding:1rem}
+.exercise{background:#fff;border-radius:8px;padding:1rem;margin-bottom:1rem}
