@@ -137,3 +137,45 @@ function vibrate() {
 function isLink(text) {
   return typeof text === "string" && text.startsWith("http");
 }
+
+// 🔽 Toggle header size
+const header = document.getElementById("appHeader");
+const toggleBtn = document.getElementById("toggleHeader");
+
+const HEADER_STATES = ["header-normal", "header-compact", "header-hidden"];
+let headerStateIndex = 0;
+
+// ripristina stato salvato
+const savedHeaderState = localStorage.getItem("headerState");
+if (savedHeaderState) {
+  headerStateIndex = HEADER_STATES.indexOf(savedHeaderState);
+  if (headerStateIndex < 0) headerStateIndex = 0;
+  header.className = savedHeaderState;
+  updateHeaderButton();
+}
+
+toggleBtn.onclick = () => {
+  headerStateIndex = (headerStateIndex + 1) % HEADER_STATES.length;
+  const newState = HEADER_STATES[headerStateIndex];
+
+  header.className = newState;
+  localStorage.setItem("headerState", newState);
+  updateHeaderButton();
+};
+
+function updateHeaderButton() {
+  switch (HEADER_STATES[headerStateIndex]) {
+    case "header-normal":
+      toggleBtn.textContent = "⬆️";
+      toggleBtn.title = "Riduci intestazione";
+      break;
+    case "header-compact":
+      toggleBtn.textContent = "⬆️⬆️";
+      toggleBtn.title = "Nascondi intestazione";
+      break;
+    case "header-hidden":
+      toggleBtn.textContent = "⬇️";
+      toggleBtn.title = "Mostra intestazione";
+      break;
+  }
+}
