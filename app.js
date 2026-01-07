@@ -1,4 +1,4 @@
-const FILE="Fisio Rock - Blocco 1.xlsx";
+const FILE="fisiorock_block1.xlsx";
 const SHEETS=["Warm Up","Pre Workout","Training 1","Training 2","Mobility"];
 let workbook;
 fetch(FILE).then(r=>r.arrayBuffer()).then(d=>{
