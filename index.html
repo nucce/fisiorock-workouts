@@ -2,7 +2,7 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- Collega il manifest -->
     <link rel="manifest" href="/fisiorock-workouts/manifest.json">
@@ -13,7 +13,9 @@
     <!-- Icona favicon (facoltativa ma utile) -->
     <link rel="icon" href="/fisiorock-workouts/icons/icon-192.png" type="image/png">
 
-    <title>Fisio Rock</title>
+    <!-- Preload CSS per migliore FCP -->
+    <link rel="preload" href="/fisiorock-workouts/style.css" as="style">
+
     <link rel="stylesheet" href="/fisiorock-workouts/style.css">
     
     <!-- Registra il Service Worker -->
@@ -26,6 +28,8 @@
       }
     </script>
 
+    <!-- Titolo -->
+    <title>Fisio Rock</title>
   </head>
   <body>
     <header id="appHeader" class="header-normal">
