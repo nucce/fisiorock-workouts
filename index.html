@@ -3,9 +3,29 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Collega il manifest -->
+    <link rel="manifest" href="/fisiorock-workouts/manifest.json">
+    
+    <!-- Colore barra su Android -->
+    <meta name="theme-color" content="#111111">
+    
+    <!-- Icona favicon (facoltativa ma utile) -->
+    <link rel="icon" href="/fisiorock-workouts/icons/icon-192.png" type="image/png
+
     <title>Fisio Rock</title>
-    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Registra il Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/fisiorock-workouts/sw.js')
+            .catch(err => console.error('SW registration failed', err));
+        });
+      }
+    </script>
+
   </head>
   <body>
     <header id="appHeader" class="header-normal">
@@ -17,14 +37,5 @@
     
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <script src="app.js"></script>
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("sw.js");
-      }
-    </script>
-    <script>
-      const matchMedia = window.matchMedia('(display-mode: standalone)').matches;
-      window.alert(matchMedia);
-    </script>
   </body>
 </html>
