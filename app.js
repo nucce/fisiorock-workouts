@@ -1,4 +1,4 @@
-const FILE="fisiorock_block1.xlsx";
+const FILE="data/fisiorock_block1.xlsx";
 const SHEETS = ["Warm Up", "Pre Workout", "Training 1", "Training 2", "Mobility"];
 
 let workbook;
