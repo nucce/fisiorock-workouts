@@ -7,7 +7,8 @@ const CORE_ASSETS = [
   '/fisiorock-workouts/manifest.json',
   '/fisiorock-workouts/icons/icon-192.png',
   '/fisiorock-workouts/icons/icon-512.png',
-  // aggiungi anche CSS e l'xlsx se vuoi cache offline
+  '/fisiorock-workouts/style.css'
+  // aggiungi anche l'xlsx se vuoi cache offline
 ];
 
 self.addEventListener('install', (event) => {
