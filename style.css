@@ -21,7 +21,8 @@ nav button{
   padding:1rem;
   background:none;
   color:#fff;
-  border:none
+  border:none;
+  cursor: pointer
 }
 
 main{
