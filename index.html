@@ -22,5 +22,9 @@
         navigator.serviceWorker.register("/fisiorock-workouts/sw.js");
       }
     </script>
+    <script>
+      const matchMedia = window.matchMedia('(display-mode: standalone)').matches;
+      window.alert(matchMedia);
+    </script>
   </body>
 </html>
