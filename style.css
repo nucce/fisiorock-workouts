@@ -82,10 +82,3 @@ header.header-compact {
 header.header-compact h1 {
   font-size: 0.9rem;
 }
-
-/* 🔹 stato nascosto */
-header.header-hidden {
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-}
