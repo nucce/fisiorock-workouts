@@ -142,7 +142,8 @@ function isLink(text) {
 const header = document.getElementById("appHeader");
 const toggleBtn = document.getElementById("toggleHeader");
 
-const HEADER_STATES = ["header-normal", "header-compact", "header-hidden"];
+//const HEADER_STATES = ["header-normal", "header-compact", "header-hidden"];
+const HEADER_STATES = ["header-normal", "header-compact"];
 let headerStateIndex = 0;
 
 // ripristina stato salvato
@@ -170,8 +171,10 @@ function updateHeaderButton() {
       toggleBtn.title = "Riduci intestazione";
       break;
     case "header-compact":
-      toggleBtn.textContent = "⬆️⬆️";
-      toggleBtn.title = "Nascondi intestazione";
+      //toggleBtn.textContent = "⬆️⬆️";
+      //toggleBtn.title = "Nascondi intestazione";
+      toggleBtn.textContent = "⬇️";
+      toggleBtn.title = "Mostra intestazione";
       break;
     case "header-hidden":
       toggleBtn.textContent = "⬇️";
