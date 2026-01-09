@@ -6,4 +6,8 @@ import { registerSW } from 'virtual:pwa-register';
 
 registerSW({immediate: true}); //registrazione SW gestita dal plugin
 
-createRoot(document.getElementById('root')).render(<App />);
+createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+);

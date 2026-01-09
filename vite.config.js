@@ -4,6 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   base: '/fisiorock-workouts/',
+  server: { hmr: {overlay: false} },
   plugins: [
       react(),
       VitePWA({

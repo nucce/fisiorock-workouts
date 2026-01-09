@@ -1,6 +1,6 @@
 import React from 'react';
 import ExerciseItem from './ExerciseItem.jsx';
-import { getRows } from '../utils/excel.js';
+import { getRows } from '../utils/excel.jsx';
 
 export default function ExerciseList({ workbook, sheetName }) {
   const rows = getRows(workbook, sheetName);

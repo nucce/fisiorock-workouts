@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { utils } from 'xlsx';
+//import { utils } from 'xlsx';
+import * as XLSX from 'xlsx';
 
 function getHyperlink(workbook, cellAddress, sheetName) {
   const sheet = workbook.Sheets[sheetName];
-  const addr = utils.encode_cell(cellAddress);
+  const addr = XLSX.utils.encode_cell(cellAddress);
   const cell = sheet?.[addr];
   return cell?.l?.Target ?? "";
 }

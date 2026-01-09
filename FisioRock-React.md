@@ -38,9 +38,9 @@ fisiorock-react/
 │  │  ├─ ExerciseList.jsx
 │  │  └─ ExerciseItem.jsx
 │  ├─ hooks/
-│  │  └─ useWorkbook.js
+│  │  └─ useWorkbook.jsx
 │  ├─ utils/
-│  │  └─ excel.js
+│  │  └─ excel.jsx
 │  └─ styles/
 │     └─ style.css
 └─ sw.js
@@ -141,7 +141,7 @@ import  Menu  from  './components/Menu.jsx';
 
 import  ExerciseList  from  './components/ExerciseList.jsx';
 
-import  useWorkbook  from  './hooks/useWorkbook.js';
+import  useWorkbook  from  './hooks/useWorkbook.jsx';
 
 const  SHEETS  =  ["Warm Up",  "Pre Workout",  "Training 1",  "Training 2",  "Mobility"];
 
@@ -176,7 +176,7 @@ return  (
 }
 ```
 
-### `src/hooks/useWorkbook.js`
+### `src/hooks/useWorkbook.jsx`
 
 Legge l’Excel da `public/` via `fetch + arrayBuffer` (approccio consigliato in browser; in React non si usa `readFile` di Node). [[docs.sheetjs.com]](https://docs.sheetjs.com/docs/demos/frontend/react/), [[stackoverflow.com]](https://stackoverflow.com/questions/65564533/cant-read-excel-file-in-sheetjs-react)
 
@@ -298,7 +298,7 @@ return  (
 }
 ```
 
-### `src/utils/excel.js`
+### `src/utils/excel.jsx`
 
 Parsing righe come nel tuo `app.js`.
 
@@ -329,7 +329,7 @@ import  React  from  'react';
 
 import  ExerciseItem  from  './ExerciseItem.jsx';
 
-import  {  getRows  }  from  '../utils/excel.js';
+import  {  getRows  }  from  '../utils/excel.jsx';
 
 export  default  function  ExerciseList({  workbook,  sheetName  })  {
 
