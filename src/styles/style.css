@@ -68,6 +68,7 @@ header {
 
 .exercise.done {
     opacity: 0.7;
+    text-decoration: line-through;
 }
 
 .exercise.current {
