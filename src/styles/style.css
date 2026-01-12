@@ -95,8 +95,13 @@ header {
     cursor: pointer;
 }
 
-.note-popup-body{
+.popup-content {
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px 0;
+    background: white;
     color: black;
+    /* box-shadow: 10px 10px 5px #dedede; */
 }
 
 .actions {
