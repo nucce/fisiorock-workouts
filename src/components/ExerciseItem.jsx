@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-//import { utils } from 'xlsx';
 import * as XLSX from 'xlsx';
+import Note from './Note';
 
 function getHyperlink(workbook, cellAddress, sheetName) {
   const sheet = workbook.Sheets[sheetName];
@@ -40,6 +40,7 @@ export default function ExerciseItem({ name, set, reps, rir, kg, rest, note, des
     <div className={`exercise ${done ? 'done' : ''} ${current ? 'current' : ''}`}>
       <div className="title">
         {link ? <a href={link} target="_blank" rel="noreferrer">{name}</a> : name}
+        {note  && <> | <Note note={note} /></>}
       </div>
       <div className="meta">
         <strong>Set:</strong> {set}
@@ -49,7 +50,6 @@ export default function ExerciseItem({ name, set, reps, rir, kg, rest, note, des
         <> · <strong>Rest:</strong> {rest}s</>
       </div>
       {description && <p className="desc">{description}</p>}
-      {note?.startsWith('http') && <p><a href={note} target="_blank" rel="noreferrer">🎥 Video</a></p>}
       <div className="actions">
         <label><input type="checkbox" checked={done} onChange={e => setDone(e.target.checked)} /> Fatto</label>
         <button className="start-rest" onClick={startRest}>⏱ Avvia recupero</button>

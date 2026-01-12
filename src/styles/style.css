@@ -91,6 +91,14 @@ header {
     margin: 8px 0 4px;
 }
 
+.note-popup {
+    cursor: pointer;
+}
+
+.note-popup-body{
+    color: black;
+}
+
 .actions {
     display: flex;
     align-items: center;
