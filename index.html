@@ -1,45 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-    <!-- Collega il manifest -->
-    <link rel="manifest" href="/fisiorock-workouts/manifest.json">
-    
-    <!-- Colore barra su Android -->
-    <meta name="theme-color" content="#111111">
-    
-    <!-- Icona favicon (facoltativa ma utile) -->
-    <link rel="icon" href="/fisiorock-workouts/icons/icon-192.png" type="image/png">
-
-    <!-- Preload CSS per migliore FCP -->
-    <link rel="preload" href="/fisiorock-workouts/style.css" as="style">
-
-    <link rel="stylesheet" href="/fisiorock-workouts/style.css">
-    
-    <!-- Registra il Service Worker -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/fisiorock-workouts/sw.js')
-            .catch(err => console.error('SW registration failed', err));
-        });
-      }
-    </script>
-
-    <!-- Titolo -->
-    <title>Fisio Rock</title>
-  </head>
-  <body>
-    <header id="appHeader" class="header-normal">
-      <h1>🏋️ Fisio Rock</h1>
-      <button id="toggleHeader" title="Riduci intestazione">⬆️</button>
-    </header>
-    <nav id="menu"></nav>
-    <main id="content"><p>Seleziona una sessione</p></main>
-    
-    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-    <script src="app.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="theme-color" content="#111111">
+        <title>🏋️ Fisio Rock</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
+    </body>
 </html>
