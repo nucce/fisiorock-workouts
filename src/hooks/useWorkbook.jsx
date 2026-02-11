@@ -12,7 +12,7 @@ export default function useWorkbook() {
 
     const loadWorkbook = async () => {
       try {
-        const url = new URL(`${import.meta.env.BASE_URL}fisiorock_block1.xlsx`, window.location.href);
+        const url = new URL(`${import.meta.env.BASE_URL}fisiorock_block2.xlsx`, window.location.href);
         console.log(`Tentativo di caricamento Excel da: ${url.toString()}`);
 
         const response = await fetch(url, { signal: controller.signal });
